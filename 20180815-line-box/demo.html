@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>行框</title>
+		<style media="screen">
+			body {
+				margin: 0;
+			}
+			.section {
+				margin: 300px 100px;
+			}
+			.container {
+				font-size: 50px;
+			}
+			.inline {
+				display: inline;
+			}
+			.inline-block {
+				display: inline-block;
+			}
+			.line {
+				display: inline-block;
+				width: 100%;
+				margin-right: -100%;
+				position: relative;
+				border-top: 2px dashed #000;
+			}
+			.line.top, .line.bottom {
+				border-color: red;
+			}
+			.line.text-top, .line.text-bottom {
+				border-color: limegreen;
+			}
+			.line.middle {
+				border-color: coral;
+			}
+			.line.baseline {
+				border-color: blue;
+			}
+			.top {
+				vertical-align: top;
+			}
+			.bottom {
+				vertical-align: bottom;
+			}
+			.text-top {
+				vertical-align: text-top;
+			}
+			.text-bottom {
+				vertical-align: text-bottom;
+			}
+			.middle {
+				vertical-align: middle;
+			}
+			.baseline {
+				vertical-align: baseline;
+			}
+			.sub {
+				vertical-align: sub;
+			}
+			.super {
+				vertical-align: super;
+			}
+			.center {
+				text-align: center;
+			}
+			.font-family {
+				font-family: 'Courier New', Courier, monospace;
+				font-family: Arial, Helvetica, sans-serif;
+				font-family: simsun;
+				font-family: 'PingFang SC';
+			}
+			.ib1 {
+				width: 90px;
+				height: 90px;
+				background: #ccc;
+			}
+			.ib2 {
+				margin: 15px 0;
+				background: red;
+			}
+			.bgblue {
+				background: #609eff;
+			}
+			.bggray {
+				background: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- content-area -->
+		<section class="section">
+			<h2 class="title">content-area</h2>
+			<div class="container">
+				<div class="container center">
+					<span class="inline font-family" style="background: #609eff;font-size: 50px;">content-area</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- strut -->
+		<section class="section">
+			<h2 class="title">strut</h2>
+			<div class="container">
+				<div style="background: #333; line-height: 50px;">
+					<span class="inline-block"></span>
+				</div>
+				<div style="background: #333;margin-top: 30px;">
+					<span class="inline-block" style="display: none;background: red;">xxxxxxx</span><img src="./img/hero.jpg" width="100" alt="hero">
+				</div>
+			</div>
+		</section>
+
+		<!-- vertical-align: baseline -->
+		<section class="section">
+			<h2 class="title">vertical-align: baseline</h2>
+			<div class="container" style="font-family:simsun;">
+				<div class="line top"></div><!--
+				--><div class="line baseline"></div><!--
+				--><div class="line bottom"></div>
+				xxx
+				<!-- inline-block -->
+				<span class="inline-block ib1 baseline"></span>
+				<span class="inline-block sub bggray">sub</span>
+				<span class="inline-block super bggray">super</span>
+				<span class="inline-block bggray" style="vertical-align: -10px;">-10px</span>
+				<span class="inline-block bggray" style="vertical-align: 50%;">50%</span>
+			</div>
+		</section>
+
+		<!-- vertical-align: middle -->
+		<section class="section">
+			<h2 class="title">vertical-align: middle</h2>
+			<div class="container" style="font-family:simsun;line-height:150px;font-size:100px;">
+				<div class="line top"></div><!--
+				--><div class="line middle"></div><!--
+				--><div class="line baseline"></div><!--
+				--><div class="line bottom"></div>
+				xxx
+				<!-- inline-block -->
+				<span class="inline-block ib1 middle"></span>
+			</div>
+		</section>
+
+		<!-- vertical-align: text-top, vertical-align: text-bottom -->
+		<section class="section">
+			<h2 class="title">vertical-align: text-top, vertical-align: text-bottom</h2>
+			<div class="container" style="font-family:simsun;line-height:150px;font-size:100px;">
+				<div class="line top"></div><!--
+				--><div class="line text-top"></div><!--
+				--><div class="line text-bottom"></div><!--
+				--><div class="line bottom"></div>
+				xxx
+				<!-- inline-block -->
+				<span class="inline-block ib1 text-top"></span>
+				<span class="inline-block ib1 text-bottom"></span>
+			</div>
+		</section>
+
+		<!-- vertical-align: top, vertical-align: bottom -->
+		<section class="section">
+			<h2 class="title">vertical-align: top, vertical-align: bottom</h2>
+			<div class="container" style="font-family:simsun;line-height:150px;font-size:100px;">
+				<div class="line top"></div><!--
+				--><div class="line text-top"></div><!--
+				--><div class="line text-bottom"></div><!--
+				--><div class="line bottom"></div>
+				xxx
+				<!-- inline-block -->
+				<span class="inline-block ib1 top"></span>
+				<span class="inline-block ib1 bottom"></span>
+			</div>
+		</section>
+
+		<!-- line-box -->
+		<section class="section">
+			<h2 class="title"></h2>
+			<div class="container">
+					<div class="line top"></div><!--
+					--><div class="line text-top"></div><!--
+					--><div class="line middle"></div><!--
+					--><div class="line text-bottom"></div><!--
+					--><div class="line baseline"></div><!--
+					--><div class="line bottom"></div>
+					<!-- 0宽元素strut，看不见的匿名inline元素，继承line-height及font-size -->
+					<!-- 父元素文字，匿名inline元素，继承line-height及font-size -->
+					xxx
+					<!-- inline元素inline-box高度仅由line-height决定 -->
+					<span class="inline">inline</span>
+					<!-- inline-block -->
+					<span class="inline-block ib1"></span>
+					<!-- inline-block内部有文字时，基线为最后一行文字baseline -->
+					<span class="inline-block ib2">inline-block</span>
+					<!-- 非替换元素除了input，其余应该都是margin 下底边 -->
+					<!-- <input type="text" value="input"> -->
+					<!-- 替换元素基线为marginbox下底边 -->
+					<img src="./img/hero.jpg" width="100" alt="hero">
+					<textarea name="" id="" cols="30" rows="10">textarea</textarea>
+			</div>
+		</section>
+	</body>
+</html>
